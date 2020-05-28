@@ -1,0 +1,22 @@
+---
+- name: Do some stuff
+  hosts: all
+  become: True
+  collections:
+    - caseraw.machinemsg
+  tasks:
+    - name: Something before
+      machinemsg:
+        text: hello
+        when: before
+        fqdn: True
+        state: present
+
+    - name: Something after
+      machinemsg:
+        text: hello again
+        when: after
+        fqdn: True
+        state: present
+
+...
